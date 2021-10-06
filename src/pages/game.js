@@ -29,13 +29,14 @@ export default class GamePage {
             color: 0xff0000
         });
         var mesh = new THREE.Mesh(geometry, material);
+        this.mesh = mesh;
         mesh.position.x = 0;
         mesh.position.y = 0;
         mesh.position.z = 1;
-        // scene.add(mesh);
+        scene.add(mesh);
 
         const axesHelper = new THREE.AxesHelper( 1000 );
-        scene.add( axesHelper );
+        // scene.add( axesHelper );
 
         camera.position.x = 0;
         camera.position.y = 0;
@@ -52,6 +53,10 @@ export default class GamePage {
             currentAngle = currentAngle + duration / 1000 * Math.PI;
         }
 
+        setTimeout(() => {
+            this.callbacks.showGameOverPage();
+        }, 2000);
+
         var render = function() {
             animate();
             mesh.rotation.set(0, currentAngle, 0);
@@ -60,6 +65,14 @@ export default class GamePage {
         };
 
         render();
+    }
+
+    show() {
+        this.mesh.visible = true;
+    }
+
+    hide() {
+        this.mesh.visible = false;
     }
 
     restart() {

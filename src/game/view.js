@@ -6,7 +6,14 @@ class GameView {
 
     }
 
+    showGamePage() {
+        this.gameOverPage.hide();
+        this.gamePage.restart();
+        this.gamePage.show();
+    }
+
     showGameOverPage() {
+        this.gamePage.hide();
         this.gameOverPage.show();
     }
 

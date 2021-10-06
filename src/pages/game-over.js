@@ -13,6 +13,7 @@ export default class GameOverPage {
         this.canvas = document.createElement('canvas');
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
+        // 此处的 texture 引用 canvas（canvas 对于浏览器来说，本质为一张图片）
         this.texture = new THREE.Texture(this.canvas);
         this.texture.minFilter = THREE.LinearFilter;
         this.material = new THREE.MeshBasicMaterial({
@@ -38,10 +39,15 @@ export default class GameOverPage {
             (window.innerHeight - 200) / 2 + 55,
         );
         this.texture.needsUpdate = true;
+        this.obj.visible = false;
         this.scene.add(this.obj);
     }
 
     show() {
-        console.log('game over page show');
+        this.obj.visible = true;
+    }
+
+    hide() {
+        this.obj.visible = false;
     }
 }
