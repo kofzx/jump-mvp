@@ -40,7 +40,7 @@ export default class GameOverPage {
         );
         this.texture.needsUpdate = true;
         this.obj.visible = false;
-        this.scene.add(this.obj);
+        this.scene.instance.add(this.obj);
     }
 
     show() {
